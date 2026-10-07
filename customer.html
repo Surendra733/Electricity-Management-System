@@ -3,102 +3,462 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Customer Dashboard - PowerConnect</title>
+
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="brand"><span class="brand-mark small">⚡</span><span>PowerConnect</span></div>
-    <div class="top-actions">
-      <span id="welcomeName" class="welcome"></span>
-      <button id="logoutBtn" class="btn outline">Logout</button>
+
+<header class="topbar">
+
+  <div class="brand">
+    <span class="brand-mark small">⚡</span>
+    <span>PowerConnect</span>
+  </div>
+
+  <div class="top-actions">
+
+    <span id="welcomeName" class="welcome"></span>
+
+    <button id="logoutBtn" class="btn outline">
+      Logout
+    </button>
+
+  </div>
+
+</header>
+
+
+<main class="container">
+
+  <div id="pageMessage" class="message hidden"></div>
+
+
+  <!-- ================= HERO ================= -->
+
+  <section class="hero-card">
+
+    <div>
+
+      <p class="eyebrow">
+        CUSTOMER PORTAL
+      </p>
+
+      <h1 id="customerGreeting">
+        Electricity Account
+      </h1>
+
+      <p class="muted">
+        Manage your meter, bills, payments and service requests.
+      </p>
+
     </div>
-  </header>
 
-  <main class="container">
-    <div id="pageMessage" class="message hidden"></div>
 
-    <section class="hero-card">
-      <div>
-        <p class="eyebrow">CUSTOMER PORTAL</p>
-        <h1 id="customerGreeting">Electricity Account</h1>
-        <p class="muted">Manage your meter, bills, payments and service requests.</p>
-      </div>
-      <div class="meter-badge">
-        <span>Meter Number</span>
-        <strong id="meterNumber">Pending Approval</strong>
-      </div>
-    </section>
+    <div class="meter-badge">
 
-    <div class="stats-grid">
-      <div class="stat-card"><span>Account Status</span><strong id="accountStatus">-</strong></div>
-      <div class="stat-card"><span>Current Bill</span><strong id="currentBill">₹0</strong></div>
-      <div class="stat-card"><span>Pending Bills</span><strong id="pendingBills">0</strong></div>
-      <div class="stat-card"><span>Open Complaints</span><strong id="openComplaints">0</strong></div>
+      <span>
+        Meter Number
+      </span>
+
+      <strong id="meterNumber">
+        Pending Approval
+      </strong>
+
     </div>
 
-    <div class="content-grid">
-      <section class="panel">
-        <div class="panel-head"><h2>My Profile</h2></div>
-        <div id="profileDetails" class="detail-grid"></div>
-      </section>
+  </section>
 
-      <section class="panel">
-        <div class="panel-head"><h2>Latest Bill</h2></div>
-        <div id="latestBill"></div>
-      </section>
+
+
+  <!-- ================= STATS ================= -->
+
+  <div class="stats-grid">
+
+    <div class="stat-card">
+
+      <span>
+        Account Status
+      </span>
+
+      <strong id="accountStatus">
+        -
+      </strong>
+
     </div>
+
+
+    <div class="stat-card">
+
+      <span>
+        Current Bill
+      </span>
+
+      <strong id="currentBill">
+        ₹0
+      </strong>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <span>
+        Pending Bills
+      </span>
+
+      <strong id="pendingBills">
+        0
+      </strong>
+
+    </div>
+
+
+    <div class="stat-card">
+
+      <span>
+        Open Complaints
+      </span>
+
+      <strong id="openComplaints">
+        0
+      </strong>
+
+    </div>
+
+  </div>
+
+
+
+  <!-- ================= PROFILE + LATEST BILL ================= -->
+
+  <div class="content-grid">
+
+
+    <!-- PROFILE -->
 
     <section class="panel">
-      <div class="panel-head"><h2>My Bills</h2></div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>Bill No.</th><th>Month</th><th>Units</th><th>Amount</th><th>Due Date</th><th>Status</th><th>Action</th></tr></thead>
-          <tbody id="billsTable"></tbody>
-        </table>
+
+      <div class="panel-head">
+
+        <h2>
+          My Profile
+        </h2>
+
       </div>
+
+      <div
+        id="profileDetails"
+        class="detail-grid">
+      </div>
+
     </section>
 
-    <div class="content-grid">
-      <section class="panel">
-        <div class="panel-head"><h2>Raise Complaint</h2></div>
-        <form id="complaintForm" class="stack-form">
-          <label>Complaint Type
-            <select id="complaintType" required>
-              <option value="">Select</option>
-              <option>Power Outage</option><option>Meter Issue</option><option>Voltage Problem</option>
-              <option>Billing Issue</option><option>Connection Issue</option><option>Other</option>
-            </select>
-          </label>
-          <label>Description
-            <textarea id="complaintDescription" required placeholder="Describe the issue"></textarea>
-          </label>
-          <button class="btn primary" type="submit">Submit Complaint</button>
-        </form>
-        <div id="complaintsList" class="list"></div>
-      </section>
 
-      <section class="panel">
-        <div class="panel-head"><h2>Service Request</h2></div>
-        <form id="serviceForm" class="stack-form">
-          <label>Request Type
-            <select id="serviceType" required>
-              <option value="">Select</option>
-              <option>Meter Inspection</option><option>Load Change</option>
-              <option>Address Change</option><option>New Connection Query</option>
-              <option>Other</option>
-            </select>
-          </label>
-          <label>Details
-            <textarea id="serviceDescription" required placeholder="Enter request details"></textarea>
-          </label>
-          <button class="btn primary" type="submit">Send Request</button>
-        </form>
-        <div id="serviceList" class="list"></div>
-      </section>
+
+    <!-- LATEST BILL -->
+
+    <section class="panel">
+
+      <div class="panel-head">
+
+        <h2>
+          Latest Bill
+        </h2>
+
+      </div>
+
+      <div id="latestBill"></div>
+
+    </section>
+
+  </div>
+
+
+
+  <!-- ================= MY BILLS ================= -->
+
+  <section class="panel">
+
+    <div class="panel-head">
+
+      <h2>
+        My Bills
+      </h2>
+
     </div>
-  </main>
 
-  <script type="module" src="js/customer.js"></script>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+
+            <th>
+              Bill No.
+            </th>
+
+            <th>
+              Month
+            </th>
+
+            <th>
+              Units
+            </th>
+
+            <th>
+              Amount
+            </th>
+
+            <th>
+              Due Date
+            </th>
+
+            <th>
+              Status
+            </th>
+
+            <th>
+              Action
+            </th>
+
+          </tr>
+
+        </thead>
+
+
+        <tbody id="billsTable">
+
+        </tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+
+  <!-- ================= COMPLAINT + SERVICE ================= -->
+
+  <div class="content-grid">
+
+
+    <!-- COMPLAINT -->
+
+    <section class="panel">
+
+      <div class="panel-head">
+
+        <h2>
+          Raise Complaint
+        </h2>
+
+      </div>
+
+
+      <form
+        id="complaintForm"
+        class="stack-form">
+
+
+        <label>
+
+          Complaint Type
+
+          <select
+            id="complaintType"
+            required>
+
+            <option value="">
+              Select
+            </option>
+
+            <option>
+              Power Outage
+            </option>
+
+            <option>
+              Meter Issue
+            </option>
+
+            <option>
+              Voltage Problem
+            </option>
+
+            <option>
+              Billing Issue
+            </option>
+
+            <option>
+              Connection Issue
+            </option>
+
+            <option>
+              Other
+            </option>
+
+          </select>
+
+        </label>
+
+
+
+        <label>
+
+          Description
+
+          <textarea
+            id="complaintDescription"
+            required
+            placeholder="Describe the issue">
+          </textarea>
+
+        </label>
+
+
+
+        <button
+          class="btn primary"
+          type="submit">
+
+          Submit Complaint
+
+        </button>
+
+
+      </form>
+
+
+      <div
+        id="complaintsList"
+        class="list">
+      </div>
+
+    </section>
+
+
+
+    <!-- SERVICE REQUEST -->
+
+    <section class="panel">
+
+      <div class="panel-head">
+
+        <h2>
+          Service Request
+        </h2>
+
+      </div>
+
+
+      <form
+        id="serviceForm"
+        class="stack-form">
+
+
+        <label>
+
+          Request Type
+
+          <select
+            id="serviceType"
+            required>
+
+            <option value="">
+              Select
+            </option>
+
+            <option>
+              Meter Inspection
+            </option>
+
+            <option>
+              Load Change
+            </option>
+
+            <option>
+              Address Change
+            </option>
+
+            <option>
+              New Connection Query
+            </option>
+
+            <option>
+              Other
+            </option>
+
+          </select>
+
+        </label>
+
+
+
+        <label>
+
+          Details
+
+          <textarea
+            id="serviceDescription"
+            required
+            placeholder="Enter request details">
+          </textarea>
+
+        </label>
+
+
+
+        <button
+          class="btn primary"
+          type="submit">
+
+          Send Request
+
+        </button>
+
+
+      </form>
+
+
+      <div
+        id="serviceList"
+        class="list">
+      </div>
+
+    </section>
+
+  </div>
+
+</main>
+
+
+
+<!-- ================================================= -->
+<!-- PDF LIBRARY -->
+<!-- ================================================= -->
+
+<!-- Reliable jsPDF CDN -->
+
+<script
+  src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js">
+</script>
+
+
+<!-- ================================================= -->
+<!-- CUSTOMER JAVASCRIPT -->
+<!-- ================================================= -->
+
+<script
+  type="module"
+  src="js/customer.js">
+</script>
+
+
 </body>
 </html>
