@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Panel - PowerConnect</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark small">⚡</span><span>PowerConnect Admin</span></div>
+    <div class="top-actions"><span id="adminName" class="welcome"></span><button id="logoutBtn" class="btn outline">Logout</button></div>
+  </header>
+
+  <main class="container">
+    <div id="adminMessage" class="message hidden"></div>
+
+    <section class="hero-card admin-hero">
+      <div><p class="eyebrow">ADMIN CONTROL CENTER</p><h1>Electricity Management Dashboard</h1><p class="muted">Review registrations, allocate meters, manage customers, bills and complaints.</p></div>
+      <div class="admin-icon">⚡</div>
+    </section>
+
+    <div class="stats-grid">
+      <div class="stat-card"><span>Total Customers</span><strong id="totalCustomers">0</strong></div>
+      <div class="stat-card"><span>Pending Registrations</span><strong id="pendingRegistrations">0</strong></div>
+      <div class="stat-card"><span>Active Meters</span><strong id="activeMeters">0</strong></div>
+      <div class="stat-card"><span>Open Complaints</span><strong id="adminOpenComplaints">0</strong></div>
+    </div>
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Customer Registration Requests</h2>
+        <button class="btn outline" id="refreshBtn">Refresh</button>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Name</th><th>Mobile</th><th>Address</th><th>Email</th><th>Requested</th><th>Action</th></tr></thead>
+          <tbody id="requestsTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="panel-head"><h2>Customers & Meter Management</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Customer</th><th>Meter No.</th><th>Mobile</th><th>Address</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="customersTable"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="content-grid">
+      <section class="panel">
+        <div class="panel-head"><h2>Create Bill</h2></div>
+        <form id="billForm" class="stack-form">
+          <label>Customer
+            <select id="billCustomer" required><option value="">Select customer</option></select>
+          </label>
+          <div class="grid-2">
+            <label>Billing Month
+              <input type="month" id="billMonth" required>
+            </label>
+            <label>Units Consumed
+              <input type="number" id="billUnits" min="0" required placeholder="150">
+            </label>
+          </div>
+          <label>Bill Amount (₹)
+            <input type="number" id="billAmount" min="0" step="0.01" required placeholder="1250">
+          </label>
+          <label>Due Date
+            <input type="date" id="billDueDate" required>
+          </label>
+          <button class="btn primary" type="submit">Generate Bill</button>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="panel-head"><h2>Payment Requests</h2></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Customer</th><th>Bill</th><th>Amount</th><th>Requested</th><th>Status</th><th>Action</th></tr></thead>
+            <tbody id="paymentsTable"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+
+    <section class="panel">
+      <div class="panel-head"><h2>Complaints & Service Requests</h2></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Customer</th><th>Type</th><th>Details</th><th>Date</th><th>Status</th><th>Action</th></tr></thead>
+          <tbody id="issuesTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <div id="customerModal" class="modal hidden">
+    <div class="modal-card">
+      <div class="modal-head"><h2 id="modalTitle">Customer</h2><button class="close" id="closeModal">×</button></div>
+      <form id="customerEditForm" class="stack-form">
+        <input type="hidden" id="editUid">
+        <label>Full Name<input id="editName" required></label>
+        <div class="grid-2">
+          <label>Age<input type="number" id="editAge" min="18" max="100" required></label>
+          <label>Mobile<input id="editMobile" pattern="[0-9]{10}" maxlength="10" required></label>
+        </div>
+        <label>Address<textarea id="editAddress" required></textarea></label>
+        <div class="grid-2">
+          <label>Meter Number<input id="editMeter" placeholder="Auto-generate if blank"></label>
+          <label>Status<select id="editStatus"><option value="active">Active</option><option value="suspended">Suspended</option><option value="pending">Pending</option></select></label>
+        </div>
+        <button class="btn primary" type="submit">Save Customer</button>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/admin.js"></script>
+</body>
+</html>

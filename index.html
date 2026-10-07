@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>PowerConnect - Electricity Management System</title>
+
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+
+<body class="auth-page">
+
+
+  <div class="auth-shell">
+
+
+    <!-- =========================================
+         LEFT SIDE
+    ========================================== -->
+
+    <div class="auth-brand">
+
+      <div class="brand-mark">
+        ⚡
+      </div>
+
+      <h1>PowerConnect</h1>
+
+      <p>Electricity Management System</p>
+
+
+      <div class="feature-list">
+
+        <span>✓ Online Customer Registration</span>
+
+        <span>✓ Unique Meter Allocation</span>
+
+        <span>✓ Electricity Bill Management</span>
+
+        <span>✓ Online Payment Requests</span>
+
+        <span>✓ Complaints & Service Tracking</span>
+
+        <span>✓ Admin Management Dashboard</span>
+
+      </div>
+
+    </div>
+
+
+
+    <!-- =========================================
+         RIGHT SIDE
+    ========================================== -->
+
+    <div class="auth-card">
+
+
+      <!-- =========================================
+           TABS
+      ========================================== -->
+
+      <div class="tabs">
+
+        <button
+          type="button"
+          class="tab active"
+          data-tab="customerLogin">
+
+          Customer Login
+
+        </button>
+
+
+        <button
+          type="button"
+          class="tab"
+          data-tab="adminLogin">
+
+          Admin Login
+
+        </button>
+
+
+        <button
+          type="button"
+          class="tab"
+          data-tab="register">
+
+          Registration
+
+        </button>
+
+      </div>
+
+
+
+      <!-- =========================================
+           CUSTOMER LOGIN
+      ========================================== -->
+
+      <form
+        id="customerLoginForm"
+        class="auth-form">
+
+
+        <h2>Customer Login</h2>
+
+
+        <p class="muted">
+          Login to access your electricity account.
+        </p>
+
+
+        <label>
+
+          Email
+
+          <input
+            type="email"
+            id="customerLoginEmail"
+            required
+            autocomplete="email"
+            placeholder="customer@example.com">
+
+        </label>
+
+
+
+        <label>
+
+          Password
+
+          <input
+            type="password"
+            id="customerLoginPassword"
+            required
+            autocomplete="current-password"
+            placeholder="••••••••">
+
+        </label>
+
+
+
+        <button
+          class="btn primary full"
+          type="submit">
+
+          ⚡ Customer Login
+
+        </button>
+
+
+
+        <button
+          class="link-btn"
+          type="button"
+          id="customerForgotPassword">
+
+          Forgot Password?
+
+        </button>
+
+
+      </form>
+
+
+
+      <!-- =========================================
+           ADMIN LOGIN
+      ========================================== -->
+
+      <form
+        id="adminLoginForm"
+        class="auth-form hidden">
+
+
+        <h2>Admin Login</h2>
+
+
+        <p class="muted">
+
+          Login to access the Electricity Management
+          Admin Panel.
+
+        </p>
+
+
+
+        <label>
+
+          Admin Email
+
+          <input
+            type="email"
+            id="adminLoginEmail"
+            required
+            autocomplete="email"
+            placeholder="admin@example.com">
+
+        </label>
+
+
+
+        <label>
+
+          Admin Password
+
+          <input
+            type="password"
+            id="adminLoginPassword"
+            required
+            autocomplete="current-password"
+            placeholder="••••••••">
+
+        </label>
+
+
+
+        <button
+          class="btn primary full"
+          type="submit">
+
+          🔐 Admin Login
+
+        </button>
+
+
+
+        <button
+          class="link-btn"
+          type="button"
+          id="adminForgotPassword">
+
+          Forgot Password?
+
+        </button>
+
+
+      </form>
+
+
+
+      <!-- =========================================
+           CUSTOMER REGISTRATION
+      ========================================== -->
+
+      <form
+        id="registerForm"
+        class="auth-form hidden">
+
+
+        <h2>New Customer Registration</h2>
+
+
+        <p class="muted">
+
+          Submit your details. An administrator will
+          review your request and allocate a meter.
+
+        </p>
+
+
+
+        <!-- NAME + AGE -->
+
+        <div class="grid-2">
+
+
+          <label>
+
+            Full Name
+
+            <input
+              type="text"
+              id="regName"
+              required
+              placeholder="Rahul Sharma">
+
+          </label>
+
+
+
+          <label>
+
+            Age
+
+            <input
+              type="number"
+              id="regAge"
+              min="18"
+              max="100"
+              required
+              placeholder="25">
+
+          </label>
+
+
+        </div>
+
+
+
+        <!-- ADDRESS -->
+
+        <label>
+
+          Address
+
+          <textarea
+            id="regAddress"
+            required
+            placeholder="House No., Street, City, State"></textarea>
+
+        </label>
+
+
+
+        <!-- MOBILE + EMAIL -->
+
+        <div class="grid-2">
+
+
+          <label>
+
+            Mobile Number
+
+            <input
+              type="tel"
+              id="regMobile"
+              required
+              pattern="[0-9]{10}"
+              maxlength="10"
+              placeholder="9876543210">
+
+          </label>
+
+
+
+          <label>
+
+            Email
+
+            <input
+              type="email"
+              id="regEmail"
+              required
+              placeholder="customer@example.com">
+
+          </label>
+
+
+        </div>
+
+
+
+        <!-- PASSWORD -->
+
+        <label>
+
+          Password
+
+          <input
+            type="password"
+            id="regPassword"
+            minlength="6"
+            required
+            placeholder="Minimum 6 characters">
+
+        </label>
+
+
+
+        <button
+          class="btn primary full"
+          type="submit">
+
+          Create Registration Request
+
+        </button>
+
+
+      </form>
+
+
+
+      <!-- =========================================
+           MESSAGE
+      ========================================== -->
+
+      <div
+        id="authMessage"
+        class="message hidden">
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+
+  <!-- IMPORTANT:
+       Firebase JavaScript module -->
+
+  <script
+    type="module"
+    src="./js/auth.js">
+
+  </script>
+
+
+</body>
+
+</html>
